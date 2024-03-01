@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style1.css" />
+    <title>nothing</title>
+    <script>
+      function myFunction() {
+        document.getElementById("demo").innerHTML = "应该能行吧";
+      }
+      function well(url) {
+        return fetch(url, { method: 'GET' })
+          .then(response => {
+            return response.json();
+          });
+      }
+      function test() {
+        well('https://api.vvhan.com/api/en').then(res => {
+            document.getElementById("result").innerHTML = JSON.stringify(res.data.zh);
+            document.getElementById("res").innerHTML = JSON.stringify(res.data.en);
+            document.getElementById("resu").innerHTML = `<img src="${res.data.pic}" alt="图片">`;
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <p id="demo">测试一下</p>
+    <button type="button" onclick="myFunction()">点我一下</button>
+    <button type="button" onclick="test()">shishikan</button>
+    <div id="result"></div>
+    <div id="res" class="sp"></div>
+    <div id="resu"></div>
+  </body>
+</html>
+
